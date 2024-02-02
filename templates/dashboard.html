@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="container-fluide">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="mb-1" style="background-color: #007406; height:600px;">
+                <div class="text-center">
+                    <img src="static/images/crop.png" alt="avatar" class="rounded-circle img-fluid"
+                        style="width: 150px; margin-top: 30px;">
+                    <h3 class="mt-3" style="color:rgb(255, 255, 255);"> Hello,</h3>
+                    <h1 class="mt-0 mb-3" style="color:rgb(255, 255, 255);"> {{first_name}} {{last_name}} </h1>
+                    <hr color="white">
+                    <a href="log_out" style="color:rgb(255, 255, 255);"> Log Out </a>
+                    <hr color="white">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="mb-1" style="height:600px;">
+                <h1 class="ballet_text mt-1" style="color:#007406;"><b>Crop Recommendation Form</b></h1>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <div class="row">
+                            <div class="col-md-6 m-auto">
+                                <div class="mail_section">
+                                    <input type="text" class="mail_text" value="{{farmer_name}}"
+                                        placeholder="Farmer Name" name="farmer_name">
+                                    <input type="number" class="mail_text" value="{{contact_no}}"
+                                        placeholder="Contact Number" name="contact_no">
+                                    <input type="number" class="mail_text" value="{{n}}"
+                                        placeholder="Ratio of Nitrogen Content (0-140)" name="n">
+                                    <input type="number" class="mail_text" value="{{p}}"
+                                        placeholder="Ratio of Phosphorous Content (5-145)" name="p">
+                                    <input type="number" class="mail_text" value="{{k}}"
+                                        placeholder="Ratio of Potassium Content (5-205)" name="k">
+                                    <input type="text" class="mail_text" value="{{temperature}}"
+                                        placeholder="Temperature (in degree Celsius)" name="temperature">
+                                    <input type="text" class="mail_text" value="{{humidity}}"
+                                        placeholder="Humidity (in %)" name="humidity">
+                                    <input type="text" class="mail_text" value="{{ph}}"
+                                        placeholder="pH Value of Soil (0-14)" name="ph">
+                                    <input type="text" class="mail_text" value="{{rainfall}}"
+                                        placeholder="Rainfall (in mm)" name="rainfall">
+                                    <button type="submit" style="margin-top: 20px;" class="btn btn-success">Predict
+                                        Crop</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock body %}
